@@ -10,10 +10,6 @@ using Valve.VR;
 
 public class Walk : MonoBehaviour
 {
-	private float timer = 0.0; 
-    float bobbingSpeed = 0.18; 
-    float bobbingAmount = 0.2; 
-    float midpoint = 2.0; 
 	
     SteamVR_TrackedObject trackedObj; //The tracked object
     SteamVR_Controller.Device controller; //The controller
