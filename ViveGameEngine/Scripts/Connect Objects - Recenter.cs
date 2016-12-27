@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Update to poll for inputs and set flags
+// Will be updated to poll for inputs and set flags
+
+// !You may need to rename this script to "button_manipulate.cs"!
+
+// Attach this script to one or both Vive controllers
+// Attach the object you want to manipulate to "objectReferenceSlot1" 
+// The touchpad will center the object in "objectReferenceSlot1"
 
 [RequireComponent(typeof(SteamVR_TrackedObject))] // This script requires a SteamVR tracked object
 
-public class controller_pickup : MonoBehaviour {
+public class button_manipulate : MonoBehaviour {
 
     SteamVR_TrackedObject trackedObj; //The tracked object
     SteamVR_Controller.Device controller; //The controller

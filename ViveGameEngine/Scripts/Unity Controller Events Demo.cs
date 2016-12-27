@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Update to poll for inputs and set flags
+// Will be updated to poll for inputs and set flags
+
+// !You may need to rename this script to "trigger_input.cs"!
+
+// Attach this script to one or both Vive controllers
+// Holding and releasing the trigger will write descriptions of
+// The actions to the Debug log 
 
 [RequireComponent(typeof(SteamVR_TrackedObject))] // This script requires a SteamVR tracked object
 
-public class controller_input : MonoBehaviour {
+public class trigger_input : MonoBehaviour {
 
     SteamVR_TrackedObject trackedObj; //The tracked object
     SteamVR_Controller.Device controller; //The controller
