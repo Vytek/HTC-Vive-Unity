@@ -2,7 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Update to poll for inputs and set flags
+// Will be updated to poll for inputs and set flags
+
+// !You may need to rename this script to "controller_pickup.cs"!
+
+// Attach this script to one or both Vive controllers
+// Holding the trigger will allow you to hold and drop
+// any object with a collider that is not Kinetmatic 
 
 [RequireComponent(typeof(SteamVR_TrackedObject))] // This script requires a SteamVR tracked object
 

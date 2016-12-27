@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using UnityStandardAssets.ImageEffects;
+using Valve.VR;
 
 // !You may need to rename this script to "noclip.cs"!
 
@@ -10,13 +10,14 @@ using UnityStandardAssets.ImageEffects;
 // The top of the touchpad will make the camera go forward, the bottom will make
 // it go backward
 
-public class noclip : MonoBehaviour
+public class move : MonoBehaviour
 {
     SteamVR_TrackedObject trackedObj; //The tracked object
     SteamVR_Controller.Device controller; //The controller
     public GameObject cameraRig; //The Camera Rig
     public GameObject look; //The object considered "forward"
     public float speed = 2.0f;
+    Vector2 touchpad; //Location of finger on touchpad
 
 
     // First event function
@@ -25,7 +26,8 @@ public class noclip : MonoBehaviour
         trackedObj = GetComponent<SteamVR_TrackedObject>(); //get and set required component
     }
 
-    // Called on a physics step - FixedUpdate timestep changed to 90fps (1/90)
+
+    // Called on a physics step - FixedUpdate timestep changed to 90fps (1/90) Change to update flags
     void FixedUpdate()
     {
         controller = SteamVR_Controller.Input((int)trackedObj.index); //Create Controller variable and use it to store inputs
@@ -33,7 +35,19 @@ public class noclip : MonoBehaviour
         if (controller.GetPress(SteamVR_Controller.ButtonMask.Touchpad)) //On touchpad top press
         {
             Debug.Log("Touchpad top was clicked to move"); //Log action 
-            cameraRig.transform.position += look.transform.forward * speed * Time.deltaTime; //move in direction
+            touchpad = controller.GetAxis(EVRButtonId.k_EButton_SteamVR_Touchpad);
+
+            if (touchpad.y > 0.15f)
+            {
+                Debug.Log("forward"); //Log action 
+                cameraRig.transform.position += look.transform.forward * speed * Time.deltaTime; //move in direction
+            }
+
+            else
+            {
+                Debug.Log("backward");
+                cameraRig.transform.position -= look.transform.forward * speed * Time.deltaTime; //move in direction
+            }
         }
 
     }
